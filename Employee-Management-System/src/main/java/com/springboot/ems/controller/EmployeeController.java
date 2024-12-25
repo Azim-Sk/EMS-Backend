@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springboot.ems.dto.EmployeeDTO;
 import com.springboot.ems.service.EmployeeService;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
@@ -46,10 +46,10 @@ public class EmployeeController {
 	}
 	
 	@PutMapping("{id}")
-	public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable("id")Long employeeId,
-	@RequestBody EmployeeDTO employeeDto){
-		EmployeeDTO employee = service.updateEmployee(employeeId, employeeDto);
-		return ResponseEntity.ok(employee);
+	public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable("id") Long employeeId,
+	                                                   @RequestBody EmployeeDTO employeeDto) {
+	    EmployeeDTO employee = service.updateEmployee(employeeId, employeeDto);
+	    return ResponseEntity.ok(employee);
 	}
 	
 	@DeleteMapping("{id}")
